@@ -10,15 +10,19 @@
    </div>
 <% end %>
 
-<%= form_for @post do |f| %>
+<%= form_for @post, html: { multipart: true } do |f| %>
   <div class="form-control">
   	<%= f.label :title %>
   	<%= f.text_field :title %>
   </div>
 
   <div class="form-control">
-  	<%= f.label :bodye %>
+  	<%= f.label :body %>
   	<%= f.text_field :body %>
+  </div>
+
+  <div class="form-control">
+    <%= f.file_field :image %>
   </div>
 
   <div class="form-control">
