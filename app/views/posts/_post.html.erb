@@ -2,7 +2,10 @@
 	<section class="post-head">
 		<h2><%= link_to post.title, post_path(post) %></h2>
 		<time><%= post.created_at.to_date.strftime("%d %B, %Y") %></time>
-		<%= link_to 'Edit', edit_post_path(post) %>
-		<%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Realy?'}%>
+
+		<% if user_signed_in? && current_user.admin? %>
+		<%= link_to 'Edit', edit_admin_post_path(post) %>
+		<%= link_to 'Delete', admin_post_path(post), method: :delete, data: {confirm: 'Realy?'}%>
+		<% end %>
 	</section>
 </article>

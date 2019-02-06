@@ -1,5 +1,9 @@
 <h1>All posts :</h1>
 
+<% if user_signed_in? && current_user.admin? %>
+ <%= link_to "New post", new_admin_post_path %>
+ <% end %>
+
 <%= render @posts %>
 
 <%= will_paginate @posts %>
